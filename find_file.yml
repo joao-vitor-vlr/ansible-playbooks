@@ -1,0 +1,16 @@
+---
+
+- name: Find files
+  gather_facts: false
+  hosts: localhost
+  tasks:
+
+    - name: Recursively find /tmp files older than 2 days
+      find:
+        paths: /tmp
+        recurse: yes
+      register: teste
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: teste
+        
